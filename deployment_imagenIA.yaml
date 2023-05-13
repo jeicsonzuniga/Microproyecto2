@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubermatic-dl-deployment-imagen-ia
+spec:
+  selector:
+    matchLabels:
+      app: kubermatic-dl
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: kubermatic-dl
+    spec:
+     containers:
+     - name: kubermatic-dl
+       #image: kubermatic00/kubermatic-dl:latest
+       image: jeicson/imagen.ia:v1
+       imagePullPolicy: Always
+       ports:
+       - containerPort: 8080
